@@ -1,0 +1,36 @@
+<h2 class="text-center">Usuarios Registrados</h2>
+<input type="text" placeholder="Filtro" id="filtro" (keyup)="filterTable()">
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th scope="col"(click)="sortTable(0)">#</th>
+            <th scope="col"(click)="sortTable(1)">Nombre</th>
+            <th scope="col"(click)="sortTable(2)">Primer Apellido</th>
+            <th scope="col"(click)="sortTable(3)">Segundo Apellido</th>
+            <th scope="col"(click)="sortTable(4)">DNI</th>
+            <th scope="col"(click)="sortTable(5)">Fecha de Nacimiento</th>
+            <th scope="col"(click)="sortTable(6)">Sexo</th>
+            <th scope="col"(click)="sortTable(7)">Nombre del Padre</th>
+            <th scope="col"(click)="sortTable(8)">Apellido del Padre</th>
+            <th scope="col"(click)="sortTable(9)">Nombre de la Madre</th>
+            <th scope="col"(click)="sortTable(10)">Apellido de la Madre</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let u of user; let i = index">
+            <tr>
+                <th scope="row">{{i + 1}}</th>
+                <td>{{u.nombre}}</td>
+                <td>{{u.apellido1}}</td>
+                <td>{{u.apellido2}}</td>
+                <td>{{u.dni}}</td>
+                <td>{{u.fnacimiento}}</td>
+                <td>{{u.sexo}}</td>
+                <td>{{u.nombrePadre}}</td>
+                <td>{{u.apellidoPadre}}</td>
+                <td>{{u.nombreMadre}}</td>
+                <td>{{u.apellidoMadre}}</td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>

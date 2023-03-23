@@ -1,0 +1,77 @@
+<section class="col-12 col-md-5 col-lg-5 offset-md-3 offset-lg-3">
+<form [formGroup]="form" (ngSubmit)="postData()">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre*</label>
+      <input type="text" class="form-control" id="nombre" formControlName="nombre">
+    </div>
+       <div *ngIf="nombre.touched && nombre.errors?.['required']" class="alert alert-danger">Nombre obligado</div>
+       <div *ngIf="nombre.touched && nombre.errors?.['minlength']" class="alert alert-danger">No puede ser menor a 3 caracteres</div>
+       <div *ngIf="nombre.touched && nombre.errors?.['maxlength']" class="alert alert-danger">No puede ser mayor a 15 caracteres</div>
+       <div *ngIf="nombre.touched && nombre.errors?.['checkName']" class="alert alert-danger">No se puede usar ese nombre</div>
+       <div *ngIf="nombre.touched && nombre.invalid" class="alert alert-danger">No se puede usar ese nombre</div>
+       
+       <div class="mb-3">
+        <label for="apellido1" class="form-label">Primer Apellido*</label>
+        <input type="text" class="form-control" id="apellido1" formControlName="apellido1">
+      </div>
+      <div *ngIf="apellido1.touched && apellido1.errors?.['required']" class="alert alert-danger">Primer apellido obligado</div>
+      <div *ngIf="apellido1.touched && apellido1.errors?.['minlength']" class="alert alert-danger">No puede ser menor a 3 caracteres</div>
+      <div *ngIf="apellido1.touched && apellido1.errors?.['maxlength']" class="alert alert-danger">No puede ser mayor a 15 caracteres</div>
+      <div class="mb-3">
+        <label for="apellido2" class="form-label">Segundo Apellido</label>
+        <input type="text" class="form-control" id="apellido2" formControlName="apellido2">
+      </div>
+      <div *ngIf="apellido2.touched && apellido2.errors?.['minlength']" class="alert alert-danger">No puede ser menor a 3 caracteres</div>
+      <div *ngIf="apellido2.touched && apellido2.errors?.['maxlength']" class="alert alert-danger">No puede ser mayor a 15 caracteres</div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
+      </div>
+      <div *ngIf="email.touched && email.invalid" class="alert alert-danger">Email no valido</div>
+      <div class="mb-3">
+        <label for="dni" class="form-label">DNI*</label>
+        <input type="text" class="form-control" id="dni" formControlName="dni">
+      </div>
+         <div *ngIf="dni.touched && dni.invalid" class="alert alert-danger">DNI no correcto</div>
+      
+      <div class="mb-3">
+        <label for="email" class="form-label">Sexo</label>
+      <select class="form-select" formControlName="sexo" aria-label="Default select example">
+        <option value="hombre">Hombre</option>
+        <option value="mujer">Mujer</option>
+      </select>
+      </div>
+      <div class="mb-3">
+        <label for="fnacimiento" class="form-label">Fecha de nacimiento</label>
+        <input type="date" (blur)="checkEdad()" class="form-control" id="fnacimiento" formControlName="fnacimiento" max={{this.fecha}}>
+      </div>
+
+<div *ngIf="checkEdad() == false" >
+      <div class="mb-3" >
+        <label for="nombrePadre" class="form-label">Nombre Padre</label>
+        <input type="text" class="form-control" id="nombrePadre" formControlName="nombrePadre">
+      </div>
+      <div *ngIf="nombrePadre.touched && nombrePadre.errors?.['minlength']" class="alert alert-danger">No puede ser menor a 3 caracteres</div>
+      <div *ngIf="nombrePadre.touched && nombrePadre.errors?.['maxlength']" class="alert alert-danger">No puede ser mayor a 15 caracteres</div>
+      <div class="mb-3">
+        <label for="apellidoPadre" class="form-label">Apellido Padre</label>
+        <input type="text" class="form-control" id="apellidoPadre" formControlName="apellidoPadre">
+      </div>
+      <div *ngIf="apellidoPadre.touched && apellidoPadre.errors?.['minlength']" class="alert alert-danger">No puede ser menor a 3 caracteres</div>
+      <div *ngIf="apellidoPadre.touched && apellidoPadre.errors?.['maxlength']" class="alert alert-danger">No puede ser mayor a 15 caracteres</div>
+      <div class="mb-3">
+        <label for="nombreMadre" class="form-label">Nombre Madre</label>
+        <input type="text" class="form-control" id="nombreMadre" formControlName="nombreMadre">
+      </div>
+      <div *ngIf="nombreMadre.touched && nombreMadre.errors?.['minlength']" class="alert alert-danger">No puede ser menor a 3 caracteres</div>
+      <div *ngIf="nombreMadre.touched && nombreMadre.errors?.['maxlength']" class="alert alert-danger">No puede ser mayor a 15 caracteres</div>
+      <div class="mb-3">
+        <label for="apellidoMadre" class="form-label">Apellido Madre</label>
+        <input type="text" class="form-control" id="apellidoMadre" formControlName="apellidoMadre">
+      </div>
+      <div *ngIf="apellidoMadre.touched && apellidoMadre.errors?.['minlength']" class="alert alert-danger">No puede ser menor a 3 caracteres</div>
+      <div *ngIf="apellidoMadre.touched && apellidoMadre.errors?.['maxlength']" class="alert alert-danger">No puede ser mayor a 15 caracteres</div>
+</div>
+    <button  type="submit" [disabled]="form.invalid" class="offset-5 btn btn-primary">Submit</button>
+  </form>
+</section>
